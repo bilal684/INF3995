@@ -1,0 +1,180 @@
+CANSID 11-bit identifier;Data1 type;Data2 type;Comment
+
+;;;Emergency Event data
+CANSID_RESERVED_1;MAGIC;NONE;Don't use 0x1 for any command
+COMMAND_EMERGENCY_DEPLOY_DROGUE;MAGIC;NONE;(To the rocket) Emergency deploy drogue parachute
+COMMAND_EMERGENCY_DEPLOY_MAIN;MAGIC;NONE;(To the rocket) Emergency deploy main parachute
+MOTOR_EMERGENCY_VENT;UNSIGNED;MAGIC;(To the rocket) Vent motor ASAP, Data1 = 0 -> close vent
+MOTOR_FUELING_STANDBY;MAGIC;NONE;(To the rocket) Stop fueling and everything else, standby until further instructions
+MOTOR_MANUAL_START;UNSIGNED;MAGIC;(To the rocket) Start the motor manually. Note that the motor needs to be in ignition detection mode, and the option must be allowed. Data1 = 0 -> close motor valve
+MOTOR_ALLOW_MANUAL_START;UNSIGNED;MAGIC;(To the rocket) Data1 = 0 -> disallow manual start (default), Data2 = 0xDEADBEEF -> allow manual start.
+MOTOR_OVERRIDE_LAUNCH_READINESS;UNSIGNED;MAGIC;(To the rocket) Sets the imminent launch status. Data1 = 0xDEADBEEF -> override, Data2 = 0 -> non-override 
+
+;;;Safety/critical data
+COMMAND_DISARM;MAGIC;NONE;(To the rocket) Software disarm the recovery system
+COMMAND_ARM;MAGIC;NONE;(To the rocket) Software arm the recovery system
+COMMAND_UNLOCK;MAGIC;NONE;(To the rocket) Unlock le recovery system, allowing it to be disarmed
+COMMAND_LOCK;MAGIC;NONE;(To the rocket) Lock le recovery system, preventing it from being armed
+LVDM_CANNOT_TRIGGER_NOT_ARMED;TIMESTAMP;MAGIC;Recovery system cannot and will not try to trigger because it is not armed
+LVDM_LOCKED_CANNOT_DISARM;TIMESTAMP;MAGIC;Recovery system cannot be disarmed because it is in the locked state
+LVDM_ARMING_STATUS;UNSIGNED;TIMESTAMP;Arming state according to the ARMING_STATE enum
+LVDM_EMERGENCY_KABOOM_CALLED;UNSIGNED;TIMESTAMP;The LVDMTrigger function was called
+LVDM_TRIGGERED;UNSIGNED;TIMESTAMP;The LVDMTrigger function returned EXIT_SUCCESS
+LVDM_CHARGES_BURNT;UNSIGNED;TIMESTAMP;The recovery system detected a successful trigger
+LVDM_STATE;UNSIGNED;TIMESTAMP;Recovery state according to the RECOVERY STATE enum
+LVDM_DIAGNOSTIC_FAILURE;UNSIGNED;TIMESTAMP;A recovery init diagnostic failed. Error code comes from the RECOVERY_DIAGNOSTIC_FAILURE enum
+LVDM_RAMP_ALT;FLOAT;TIMESTAMP;Launch ramp altitude in meters
+LVDM_ACKNOWLEDGE;UNSIGNED;TIMESTAMP;Recovery system acknowledged a command. Data1 = CANSID of acknowledged command
+LVDM_LOCKED;UNSIGNED;TIMESTAMP;Number of milliseconds until the recovery system will be unlocked, or 0 if unlocked
+VOTING_VSTRUCT_OVERFLOW;TIMESTAMP;MAGIC;Error message. Voting struct overflow for altitude calculation
+VOTING_VSTRUCT_UPDATE_FAILURE;TIMESTAMP;MAGIC;Error message. Voting struct update failure
+MOTOR_OPTION_IS_LOCKED;UNSIGNED;TIMESTAMP;The option is locked: the override must be activated first. Data1 = option in question
+MOTOR_STATUS;UNSIGNED;TIMESTAMP;Motor status (first param is of type MotorStatusStruct)
+MOTOR_SLAVE_STATUS;UNSIGNED;TIMESTAMP;Motor slave (ie. on the ground) status (first param is of type MotorSlaveStatusStruct)
+MOTOR_RESERVED1;MAGIC;NONE;
+MOTOR_FUELING_CONTROL;UNSIGNED;MAGIC; 0xDEADBEEF : Open fueling control, 0: close fueling control
+MOTOR_LAUNCH_IMMINENT;MAGIC;NONE; Launch imminent: injection mode is now automatic
+MOTOR_SET_STATE;UNSIGNED;MAGIC; Sets the state of the motor to Data1 if authorized
+MOTOR_SET_STATE_OVERRIDE;UNSIGNED;MAGIC; Sets the state of the motor to Data1
+MODULE_CRITICAL_FAILURE;UNSIGNED;UNSIGNED;MCU encountered unrecoverable error and will reboot in 1 second.
+CUBESAT_CANNON;MAGIC;NONE;Unused
+
+;;;Time-sensitive data
+COMMAND_RESET_MCU;MAGIC;NONE;(To the rocket) Reset the MCU
+LVDM_HALL_ACKNOWLEDGE;UNSIGNED;TIMESTAMP;Input switch activated on the recovery system. Data1 = switch number. There are 4 switches
+TIMER_SET;UNSIGNED;MAGIC;All MCUs should set their millisecond timer to the value of Data1
+CURRENT_FATTIME;UNSIGNED;MAGIC;(To the rocket) Unix timestamp
+LVDM_BRIDGEWIRE_RES_DROGUE;FLOAT;TIMESTAMP;Charges connection status (Bridgewire resistors) (ohm) for drogue parachute
+LVDM_BRIDGEWIRE_RES_MAIN;FLOAT;TIMESTAMP;Charges connection status (Bridgewire resistors) (ohm) for main parachute
+MOTOR_TANK_TEMP;FLOAT;TIMESTAMP;Rocket tank temperature in Celsius
+MOTOR_TANK_PRESS;FLOAT;TIMESTAMP;Rocket tank pressure in PSI
+MOTOR_COMBUSTION_CHAMBER_TEMP;FLOAT;TIMESTAMP;Combustion chamber (ie. in the grain) temperature in Celsius. Might be imprecise once the motor is started.
+MOTOR_VENT_TEMP;FLOAT;TIMESTAMP;Vent pipe temperature in C
+MOTOR_ACTUATOR_VOLTS;FLOAT;TIMESTAMP;Actuator input voltage
+BAR_PRESS1;FLOAT;TIMESTAMP;Barometric Pressure (Pascal)
+BAR_PRESS2;FLOAT;TIMESTAMP;Barometric Pressure (Pascal)
+RADIO_CONTROL;UNSIGNED;MAGIC;(To the rocket) To control the radio driver
+RADIO_ACKNOWLEDGE;UNSIGNED;MAGIC;Acknowledge of a RADIO_CONTROL message
+SD_ENABLE_LOGGING;UNSIGNED;MAGIC;Data1 = (bool)enable
+LOGGING_ACKNOWLEDGE;UNSIGNED;TIMESTAMP;Acknowledge of a SD_ENABLE_LOGGING message
+
+;;;Normal Operation Data
+LSM_ACC_X;FLOAT;TIMESTAMP;LSM303D accel on X axis in Gs
+LSM_ACC_Y;FLOAT;TIMESTAMP;LSM303D accel on Y axis in Gs
+LSM_ACC_Z;FLOAT;TIMESTAMP;LSM303D accel on Z axis in Gs
+ADXL_ACC_X;FLOAT;TIMESTAMP;ADXL375 accel on X axis in Gs
+ADXL_ACC_Y;FLOAT;TIMESTAMP;ADXL375 accel on Y axis in Gs
+ADXL_ACC_Z;FLOAT;TIMESTAMP;ADXL375 accel on Z axis in Gs
+ICM_ACC_X;FLOAT;TIMESTAMP;ICM20608 accel on X axis in Gs
+ICM_ACC_Y;FLOAT;TIMESTAMP;ICM20608 accel on Y axis in Gs
+ICM_ACC_Z;FLOAT;TIMESTAMP;ICM20608 accel on Z axis in Gs
+LSM_MAGN_FIELD_X;FLOAT;TIMESTAMP;LSM303D magnetic field on X axis in Gauss
+LSM_MAGN_FIELD_Y;FLOAT;TIMESTAMP;LSM303D magnetic field on Y axis in Gauss
+LSM_MAGN_FIELD_Z;FLOAT;TIMESTAMP;LSM303D magnetic field on Z axis in Gauss
+L3G_RATE_X;FLOAT;TIMESTAMP;L3GD20 angular rate on X axis in deg/s
+L3G_RATE_Y;FLOAT;TIMESTAMP;L3GD20 angular rate on Y axis in deg/s
+L3G_RATE_Z;FLOAT;TIMESTAMP;L3GD20 angular rate on Z axis in deg/s
+FANCY_RATE_X;FLOAT;TIMESTAMP;ADXRS453 angular rate on X axis in deg/s
+FANCY_RATE_Y;FLOAT;TIMESTAMP;ADXRS453 angular rate on Y axis in deg/s
+FANCY_RATE_Z;FLOAT;TIMESTAMP;ADXRS453 angular rate on Z axis in deg/s
+ICM_RATE_X;FLOAT;TIMESTAMP;ICM20608 angular rate on X axis in deg/s
+ICM_RATE_Y;FLOAT;TIMESTAMP;ICM20608 angular rate on Y axis in deg/s
+ICM_RATE_Z;FLOAT;TIMESTAMP;ICM20608 angular rate on Z axis in deg/s
+FILTERED_RATE_X;FLOAT;TIMESTAMP;Unused
+FILTERED_RATE_Y;FLOAT;TIMESTAMP;Unused
+FILTERED_RATE_Z;FLOAT;TIMESTAMP;Unused
+TEMPERATURE;FLOAT;TIMESTAMP;Temperature in C
+BAR_TEMPERATURE1;FLOAT;TIMESTAMP;MS5607-1 temperature in C
+BAR_TEMPERATURE2;FLOAT;TIMESTAMP;MS5607-2 temperature in C
+ONE_WIRE_TEMPERATURE;UNSIGNED;FLOAT;Data1 = thermometer ID, Data2 = temp in C
+GPS1_LATITUDE;FLOAT;TIMESTAMP;(deg)
+GPS2_LATITUDE;FLOAT;TIMESTAMP;(deg)
+GPS1_LONGITUDE;FLOAT;TIMESTAMP;(deg)
+GPS2_LONGITUDE;FLOAT;TIMESTAMP;(deg)
+GPS1_ALT_MSL;FLOAT;TIMESTAMP;gps altitude msl (m)
+GPS2_ALT_MSL;FLOAT;TIMESTAMP;gps altitude msl (m)
+GPS1_GND_SPEED;FLOAT;TIMESTAMP;GPS ground speed (m/s)
+GPS2_GND_SPEED;FLOAT;TIMESTAMP;GPS ground speed (m/s)
+GPS1_FIX_QUAL;FLOAT;TIMESTAMP;gps fix quality
+GPS2_FIX_QUAL;FLOAT;TIMESTAMP;gps fix quality
+GPS1_DATE_TIME;FLOAT;TIMESTAMP;gps time since UTC beginning of day (s)
+GPS2_DATE_TIME;FLOAT;TIMESTAMP;gps time since UTC beginning of day (s)
+GPS1_NB_SAT;UNSIGNED;TIMESTAMP;number of satellites used
+GPS2_NB_SAT;UNSIGNED;TIMESTAMP;number of satellites used
+GPS1_TRACK_ANG;FLOAT;TIMESTAMP;GPS track angle (geographic) (deg)
+GPS2_TRACK_ANG;FLOAT;TIMESTAMP;GPS track angle (geographic) (deg)
+GPS1_MAGN_VAR_TRACK;FLOAT;TIMESTAMP;GPS magnetic variation and tracking (deg)
+GPS2_MAGN_VAR;FLOAT;TIMESTAMP;GPS magnetic variation and tracking (deg)
+MOTOR_WATCHDOG_TIME_LEFT;UNSIGNED;TIMESTAMP;Time left to the auto-vent watchdog timer (in case of comms failure) of the motor.
+MOTOR_DISCONNECT_FUELING;MAGIC;NONE;(To the rocket) Disconnects the fueling line if allowed
+MOTOR_OVERRIDE_DISCONNECTION_PROTECTION;UNSIGNED;MAGIC;(To the rocket) Data1 = (bool)protection_active
+MOTOR_SET_FUELING_LOCK;UNSIGNED;MAGIC;(To the rocket) Data1 = (bool)fueling_locked
+STATUS_LATCH_RESET;UNSIGNED;MAGIC;(To the rocket) Reset status LEDs
+PUM_3V3_CURRENT;FLOAT;TIMESTAMP;
+PUM_5V_CURRENT;FLOAT;TIMESTAMP;
+PUM_BAT1_CURRENT;FLOAT;TIMESTAMP;
+PUM_BAT2_CURRENT;FLOAT;TIMESTAMP;
+PUM_BAT3_CURRENT;FLOAT;TIMESTAMP;
+PUM_VBAT1;FLOAT;TIMESTAMP;
+PUM_VBAT2;FLOAT;TIMESTAMP;
+PUM_VBAT3;FLOAT;TIMESTAMP;
+PUM_45V_CHARGED;FLOAT;TIMESTAMP;
+RPM_VOLTAGE;FLOAT;TIMESTAMP;
+RPM_CURRENT;FLOAT;TIMESTAMP;
+RPM_45V;FLOAT;TIMESTAMP;
+RADIO_STATS;UNSIGNED;UNSIGNED;
+ERR_CAN_GOT_BAD_MAGIC_BYTES;UNSIGNED;TIMESTAMP;(premier paramètre = SID du message)
+ERR_CAN_SWITCHING_BUS;UNSIGNED;TIMESTAMP; (premier paramètre = faulty bus (enum CAN_MODULE_ID casté))
+CALIB_SENSOR;UNSIGNED;MAGIC;Le premier paramètre est le SensorID du capteur
+LVDM_CHARGED;UNSIGNED;TIMESTAMP;
+MPU_ACC_X;FLOAT;TIMESTAMP;
+MPU_ACC_Y;FLOAT;TIMESTAMP;
+MPU_ACC_Z;FLOAT;TIMESTAMP;
+MPU_RATE_X;FLOAT;TIMESTAMP;
+MPU_RATE_Y;FLOAT;TIMESTAMP;
+MPU_RATE_Z;FLOAT;TIMESTAMP;
+MPU_MAGN_FIELD_X;FLOAT;TIMESTAMP;
+MPU_MAGN_FIELD_Y;FLOAT;TIMESTAMP;
+MPU_MAGN_FIELD_Z;FLOAT;TIMESTAMP;
+SL_ALTITUDE;UNSIGNED;TIMESTAMP;
+
+;;;Node-service channel
+MODULE_BASE_INIT_SUCCESS;TIMESTAMP;MAGIC;Ne devrait contenir qu'un paramètre, le temps que l'initalisation a pris. Envoyé à la fin de oronosBaseInit()
+MODULE_SPECIFIC_INIT_SUCCESS;TIMESTAMP;MAGIC;Ne devrait contenir qu'un paramètre, le temps que l'initalisation a pris. Envoyé lorsque le module a terminé le setup de ses capteurs, etc.
+MODULE_SPECIFIC_INIT_RECOVERABLE_ERROR;UNSIGNED;TIMESTAMP; Principalement pour l'ADIRM. Indique une erreur, mais dont on peut récupérer. Data1 dépend du module.
+MODULE_SPECIFIC_INIT_FAILURE;TIMESTAMP;MAGIC; Lorsqu'un module n'a pas réussi son initialisation et ne peut pas fonctionner correctement
+MODULE_HEARTBEAT;TIMESTAMP;MAGIC;Heartbeat module, envoyé régulièrement.
+MODULE_GET_STATUS;MAGIC;NONE;Requête de se faire envoyer le statut du module
+SD_CARD_WRITE_ERROR;UNSIGNED;TIMESTAMP;Une erreur d'écriture de la SD c'est produite. Des données ont été perdues.
+GS_UART_WRITE_ERROR;UNSIGNED;TIMESTAMP;Une erreur d'écriture par UART vers le GS c'est produite. Des données ont été perdues.
+GS_UART_READ_ERROR;UNSIGNED;TIMESTAMP;Une erreur de lecture par UART vers le GS c'est produite. Des données ont été perdues.
+ADIRM_DATA_QUEUE_FULL;UNSIGNED;TIMESTAMP; La queue d'envoi vers SD de l'ADIRM est full. Des données ont été perdues.
+SD_CARD_SPACE_LEFT;INT;TIMESTAMP;Retourne l'espace restant (en *ko*) sur la carte SD, ou -1 s'il y a une erreur.
+SD_TOTAL_BYTES_WRITTEN;UNSIGNED;TIMESTAMP;Retourne le nombre de bytes écrits par le module depuis le dernier reset.
+SENSOR_CALIB_X;FLOAT;UNSIGNED;Sensor auto-calibrated at this value (raw sensor unit). Second param is SensorID (defined in Sensor.h)
+SENSOR_CALIB_Y;FLOAT;UNSIGNED;Sensor auto-calibrated at this value (raw sensor unit). Second param is SensorID (defined in Sensor.h)
+SENSOR_CALIB_Z;FLOAT;UNSIGNED;Sensor auto-calibrated at this value (raw sensor unit). Second param is SensorID (defined in Sensor.h)
+MODULE_POS;UNSIGNED;TIMESTAMP;
+MODULE_NB;UNSIGNED;TIMESTAMP;
+COMMAND_REQ_MOD_POS_NB;UNSIGNED;TIMESTAMP;
+
+;;;User-defined Channel
+
+;;;Test and maintenance Channel
+CAN_TEST_INT_MAGIC;INT;MAGIC;
+CAN_TEST_INT_TIMESTAMP;INT;TIMESTAMP;
+CAN_TEST_INT_INT;INT;INT;
+CAN_TEST_INT_FLOAT;INT;FLOAT;
+CAN_TEST_INT_UNSIGNED;INT;UNSIGNED;
+CAN_TEST_FLOAT_MAGIC;FLOAT;MAGIC;
+CAN_TEST_FLOAT_TIMESTAMP;FLOAT;TIMESTAMP;
+CAN_TEST_FLOAT_INT;FLOAT;INT;
+CAN_TEST_FLOAT_FLOAT;FLOAT;FLOAT;
+CAN_TEST_FLOAT_UNSIGNED;FLOAT;UNSIGNED;
+CAN_TEST_UNSIGNED_MAGIC;UNSIGNED;MAGIC;
+CAN_TEST_UNSIGNED_TIMESTAMP;UNSIGNED;TIMESTAMP;
+CAN_TEST_UNSIGNED_INT;UNSIGNED;INT;
+CAN_TEST_UNSIGNED_FLOAT;UNSIGNED;FLOAT;
+CAN_TEST_UNSIGNED_UNSIGNED;UNSIGNED;UNSIGNED;
+CAN_TEST_MAGIC_NONE;MAGIC;NONE;
+CAN_TEST_TIMESTAMP_MAGIC;TIMESTAMP;MAGIC;

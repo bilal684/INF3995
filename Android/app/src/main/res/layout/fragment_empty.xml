@@ -1,0 +1,34 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.oronos.Fragments.EmptyFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    \
+
+    <LinearLayout
+        android:id="@+id/emptyFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/emptyFragmentContainerRL0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/emptyFragmentContainerRL1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</FrameLayout>

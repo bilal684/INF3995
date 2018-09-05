@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Rocket name="Livrable1 :)" id="42">
+	<GridContainer>
+		<Grid col="0" row="0">
+			<TabContainer>
+				<Tab name="ADIRM">
+					<DualVWidget>
+						<DataDisplayer>
+							<CAN name="LSM_MAGN_FIELD_X" id="LSM_MAGN_FIELD_X" display="__DATA1__ Gs" minAcceptable="-10" maxAcceptable="9" chiffresSign="2" updateEach="10"/>
+							<CAN name="LSM_MAGN_FIELD_Y" id="LSM_MAGN_FIELD_Y" display="__DATA1__ Gs" minAcceptable="-10" maxAcceptable="9" chiffresSign="3" updateEach="10"/>
+							<CAN name="LSM_MAGN_FIELD_Z" id="LSM_MAGN_FIELD_Z" display="__DATA1__ Gs" minAcceptable="-10" maxAcceptable="9" chiffresSign="4" updateEach="10"/>
+							<CAN name="LSM_ACC_X" id="LSM_ACC_X" display="__DATA1__ G" minAcceptable="-10" maxAcceptable="9" updateEach="10"/>
+							<CAN name="LSM_ACC_X" id="LSM_ACC_X" display="__DATA2__ ms" minAcceptable="0" maxAcceptable="1000000" updateEach="10"/>
+						</DataDisplayer>
+						<DataDisplayer>
+							<CAN name="ADIRM 0 Alt" id="BAR_PRESS1" minAcceptable="25000" maxAcceptable="95000" customUpdate="pressToAlt" specificSource="ADM" serialNb="0" updateEach="10"/>
+							<CAN name="Apogée (ADIRM 0)" id="BAR_PRESS1" minAcceptable="25000" maxAcceptable="95000" customUpdate="apogeeDetect" specificSource="ADIRM" serialNb="0"/>
+							<CAN name="TEMPERATURE" id="TEMPERATURE" display="__DATA1__" minAcceptable="15" maxAcceptable="65" specificSource="ADIRM" serialNb="0"/>
+						</DataDisplayer>
+					</DualVWidget>
+				</Tab>
+				<Tab name="ADLM">
+					<DualVWidget>
+						<DataDisplayer>
+							<CAN name="SD_CARD_WRITE_ERROR" id="SD_CARD_WRITE_ERROR" display="__DATA1__" minAcceptable="0" maxAcceptable="1"/>
+						</DataDisplayer>
+						<DataDisplayer>
+							<CAN name="MODULE_HEARTBEAT" id="MODULE_HEARTBEAT" display="__DATA1__" specificSource="ADLM" serialNb="0"/>
+						</DataDisplayer>
+					</DualVWidget>
+				</Tab>
+				<Tab name="Debug"><DebugOptions/></Tab>
+			</TabContainer>
+		</Grid>
+		<Grid col="1" row="0">
+			<TabContainer>
+				<Tab name="ModuleStatus - Buttons">
+					<DualHWidget>
+						<Modulestatus nGrid="15" nColumns="5" />
+						<ButtonArray nbColumns="1">
+							<CAN name="Drogue" id="COMMAND_EMERGENCY_DEPLOY_DROGUE" popup="True"/>					
+							<CAN name="Main" id="COMMAND_EMERGENCY_DEPLOY_MAIN" popup="True"/>					
+							<CAN name="Arm" id="COMMAND_ARM" popup="True"/>					
+							<CAN name="Disarm" id="COMMAND_DISARM" popup="True"/>					
+							<CAN name="Lock" id="COMMAND_LOCK" popup="True"/>					
+							<CAN name="Unlock" id="COMMAND_UNLOCK" popup="True"/>					
+						</ButtonArray>
+					</DualHWidget>
+				</Tab>
+				<Tab name="Data Logs"><DisplayLogWidget/></Tab>
+				<Tab name="Plots">
+					<TabContainer>
+						<Tab name="Accel">
+							<Plot name="" unit="g" axis="Acceleration">
+								<CAN id="LSM_ACC_X"/>
+								<CAN id="LSM_ACC_Y"/>
+								<CAN id="LSM_ACC_Z"/>
+							</Plot>
+						</Tab>
+						<Tab name="Gyro">
+							<Plot name="" unit="deg/s" axis="Angular speeds">
+								<CAN id="L3G_RATE_X"/>
+								<CAN id="L3G_RATE_Y"/>
+								<CAN id="L3G_RATE_Z"/>
+							</Plot>
+						</Tab>
+					</TabContainer>
+				</Tab>
+			</TabContainer>
+		</Grid>
+		<Grid col="0" row="1">
+			<TabContainer>
+				<Tab name="Map"><Map/></Tab>
+				<Tab name="FindMe"><FindMe/></Tab>
+				<Tab name="Send CAN Msg"><CustomCANSender/></Tab>
+			</TabContainer>
+		</Grid>
+		<Grid col="1" row="1">
+			<TabContainer>
+				<Tab name="Main stats - Logs">
+					<DualVWidget>
+						<DataDisplayer>
+							<CAN name="AGRUM 0 LAT" id="GPS1_LATITUDE" display="__DATA1__" minAcceptable="30" maxAcceptable="35" chiffresSign="6" specificSource="AGRUM" serialNb="0"/>
+							<CAN name="AGRUM 1 LAT" id="GPS1_LATITUDE" display="__DATA1__" minAcceptable="30" maxAcceptable="35" chiffresSign="6" specificSource="AGRUM" serialNb="1"/>
+							<CAN name="AGRUM 0 LONG" id="GPS1_LONGITUDE" display="__DATA1__" minAcceptable="100" maxAcceptable="110" chiffresSign="6" specificSource="AGRUM" serialNb="0"/>
+							<CAN name="AGRUM 1 LONG" id="GPS1_LONGITUDE" display="__DATA1__" minAcceptable="100" maxAcceptable="110" chiffresSign="6" specificSource="AGRUM" serialNb="1"/>
+							<CAN name="AGRUM 0 ALT GPS" id="GPS1_ALT_MSL" display="__DATA1__" customUpdate="meterToFoot" minAcceptable="1000" maxAcceptable="12000" specificSource="AGRUM" serialNb="0"/>
+							<CAN name="AGRUM 1 ALT GPS" id="GPS1_ALT_MSL" display="__DATA1__" customUpdate="meterToFoot" minAcceptable="1000" maxAcceptable="12000" specificSource="AGRUM" serialNb="1"/>
+							<CAN name="ADM 0 Alt" id="BAR_PRESS1" minAcceptable="25000" maxAcceptable="95000" customUpdate="pressToAlt" specificSource="ADM" serialNb="0" updateEach="10" />
+							<CAN name="ADM 1 Alt" id="BAR_PRESS1" minAcceptable="25000" maxAcceptable="95000" customUpdate="pressToAlt" specificSource="ADM" serialNb="1" updateEach="10" />
+							<CAN name="Apogée (ADM 0)" id="BAR_PRESS1" minAcceptable="25000" maxAcceptable="95000" customUpdate="apogeeDetect" specificSource="ADM" serialNb="0"/>
+							<CAN name="Apogée (ADM 1)" id="BAR_PRESS1" minAcceptable="25000" maxAcceptable="95000" customUpdate="apogeeDetect" specificSource="ADM" serialNb="1"/>
+							<CAN name="ADM 0 45V" id="RPM_45V" display="__DATA1__ V" minAcceptable="0" maxAcceptable="8" chiffresSign="2" specificSource="ADM" serialNb="0"/>
+							<CAN name="ADM 1 45V" id="RPM_45V" display="__DATA1__ V" minAcceptable="0" maxAcceptable="8" chiffresSign="2" specificSource="ADM" serialNb="1"/>
+						</DataDisplayer>
+						<DisplayLogWidget>
+							<CAN id="RPM_45V"/>
+							<CAN id="SD_CARD_WRITE_ERROR"/>
+							<CAN id="GPS1_LATITUDE"/>
+						</DisplayLogWidget>
+					</DualVWidget>
+				</Tab>
+			</TabContainer>
+		</Grid>
+	</GridContainer>
+</Rocket>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.oronos.Activities.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <!-- Login progress -->
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/login_form"
+        android:layout_width="347dp"
+        android:layout_height="279dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.078">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username" />
+
+        <EditText
+            android:id="@+id/editTextUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Server's IP address " />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/IpAdresseInput1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="bottom|center"
+                android:inputType="phone"
+                tools:layout_editor_absoluteX="165dp"
+                tools:layout_editor_absoluteY="173dp" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="bottom|center"
+                android:text="."
+                android:textSize="70px"
+                tools:layout_editor_absoluteX="126dp"
+                tools:layout_editor_absoluteY="178dp" />
+
+            <EditText
+                android:id="@+id/IpAdresseInput2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="bottom|center"
+                android:inputType="phone"
+                tools:layout_editor_absoluteX="55dp"
+                tools:layout_editor_absoluteY="171dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="bottom|center"
+                android:text="."
+                android:textSize="70px"
+                tools:layout_editor_absoluteX="126dp"
+                tools:layout_editor_absoluteY="178dp" />
+
+            <EditText
+                android:id="@+id/IpAdresseInput3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="bottom|center"
+                android:inputType="phone"
+                tools:layout_editor_absoluteX="55dp"
+                tools:layout_editor_absoluteY="171dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="bottom|center"
+                android:text="."
+                android:textSize="70px"
+                tools:layout_editor_absoluteX="126dp"
+                tools:layout_editor_absoluteY="178dp" />
+
+            <EditText
+                android:id="@+id/IpAdresseInput4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="bottom|center"
+                android:inputType="phone"
+                tools:layout_editor_absoluteX="55dp"
+                tools:layout_editor_absoluteY="171dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonConnecter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onConnexionButton"
+            android:text="CONNECT"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.596" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

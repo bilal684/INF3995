@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Rocket name="Polaris" id="10">
+	<GridContainer>
+		<Grid col="0" row="0">
+			<TabContainer>
+				<Tab name="Batteries, SD">
+					<DualVWidget>
+						<DataDisplayer>
+							<CAN name="1 - 45v" id="RPM_45V" display="__DATA1__ V" minAcceptable="0" maxAcceptable="5" chiffresSign="2" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - 45v" id="RPM_45V" display="__DATA1__ V" minAcceptable="0" maxAcceptable="5" chiffresSign="2" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - I_BAT" id="RPM_CURRENT" display="__DATA1__ A" minAcceptable="0.05" maxAcceptable="7.0" chiffresSign="2" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - I_BAT" id="RPM_CURRENT" display="__DATA1__ A" minAcceptable="0.05" maxAcceptable="7.0" chiffresSign="2" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - V_BAT" id="RPM_VOLTAGE" display="__DATA1__" minAcceptable="6.0" maxAcceptable="8.5" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - V_BAT" id="RPM_VOLTAGE" display="__DATA1__" minAcceptable="6.0" maxAcceptable="8.5" specificSource="MCD" serialNb="2"/>
+						</DataDisplayer>
+						<DataDisplayer>
+							<CAN name="1 - msg lost" id="SD_CARD_WRITE_ERROR" display="__DATA1__" minAcceptable="0" maxAcceptable="0" chiffresSign="0" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - msg lost" id="SD_CARD_WRITE_ERROR" display="__DATA1__" minAcceptable="0" maxAcceptable="0" chiffresSign="0" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - space left" id="SD_CARD_SPACE_LEFT" minAcceptable="1048576" customUpdate="SDSpaceLeft" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - space left" id="SD_CARD_SPACE_LEFT" minAcceptable="1048576" customUpdate="SDSpaceLeft"  specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - written" id="SD_TOTAL_BYTES_WRITTEN" minAcceptable="0" maxAcceptable="3500000000" customUpdate="SDBytesWritten" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - written" id="SD_TOTAL_BYTES_WRITTEN" minAcceptable="0" maxAcceptable="3500000000" customUpdate="SDBytesWritten"  specificSource="MCD" serialNb="2"/>
+							<CAN name="GS UART write error" id="GS_UART_WRITE_ERROR" display="__DATA1__" minAcceptable="0" maxAcceptable="0" chiffresSign="0"/>
+							<CAN name="GS UART read error" id="GS_UART_READ_ERROR" display="__DATA1__" minAcceptable="0" maxAcceptable="0" chiffresSign="0"/>
+							<CAN name="1 - data queue full" id="ADIRM_DATA_QUEUE_FULL" display="__DATA1__" minAcceptable="0" maxAcceptable="0" chiffresSign="0" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - data queue full" id="ADIRM_DATA_QUEUE_FULL" display="__DATA1__" minAcceptable="0" maxAcceptable="0" chiffresSign="0" specificSource="MCD" serialNb="2"/>
+						</DataDisplayer>
+					</DualVWidget>
+				</Tab>
+				<Tab name="GPS and Temperature">
+					<DualVWidget>
+						<DataDisplayer>
+							<CAN name="1 - LAT" id="GPS1_LATITUDE" display="__DATA1__" minAcceptable="30" maxAcceptable="35" chiffresSign="6" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - LAT" id="GPS1_LATITUDE" display="__DATA1__" minAcceptable="30" maxAcceptable="35" chiffresSign="6" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - LONG" id="GPS1_LONGITUDE" display="__DATA1__" minAcceptable="100" maxAcceptable="110" chiffresSign="6" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - LONG" id="GPS1_LONGITUDE" display="__DATA1__" minAcceptable="100" maxAcceptable="110" chiffresSign="6" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - ALT" id="GPS1_ALT_MSL" display="__DATA1__ m" minAcceptable="1000" maxAcceptable="12000" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - ALT" id="GPS1_ALT_MSL" display="__DATA1__ m" minAcceptable="1000" maxAcceptable="12000" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - Gnd speed" id="GPS1_GND_SPEED" display="__DATA1__ km/h" chiffresSign="2" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - Gnd speed" id="GPS1_GND_SPEED" display="__DATA1__ km/h" chiffresSign="2" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - Nb sat" id="GPS1_NB_SAT" display="__DATA1__" minAcceptable="1" maxAcceptable="12" chiffresSign="0" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - Nb sat" id="GPS1_NB_SAT" display="__DATA1__" minAcceptable="1" maxAcceptable="12" chiffresSign="0" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - UTC" id="GPS1_DATE_TIME" display="__DATA1__" chiffresSign="0" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - UTC" id="GPS1_DATE_TIME" display="__DATA1__" chiffresSign="0" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - Horiz. precision" id="GPS1_FIX_QUAL" display="__DATA1__" chiffresSign="2" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - Horiz. precision" id="GPS1_FIX_QUAL" display="__DATA1__" chiffresSign="2" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - Course over Ground" id="GPS1_TRACK_ANG" display="__DATA1__ °" chiffresSign="2" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - Course over Ground" id="GPS1_TRACK_ANG" display="__DATA1__ °" chiffresSign="2" specificSource="MCD" serialNb="2"/>
+						</DataDisplayer>
+						<DataDisplayer>
+							<CAN name="MCD 1 Temp ICM" id="TEMPERATURE" display="__DATA1__ °C" minAcceptable="5" maxAcceptable="65" chiffresSign="2" specificSource="MCD" serialNb="1"/>
+							<CAN name="MCD 2 Temp ICM" id="TEMPERATURE" display="__DATA1__ °C" minAcceptable="5" maxAcceptable="65" chiffresSign="2" specificSource="MCD" serialNb="2"/>
+		
+							<CAN name="MCD 1 Temp Bar 1" id="BAR_TEMPERATURE1" display="__DATA1__ °C" minAcceptable="5" maxAcceptable="65" chiffresSign="2" specificSource="MCD" serialNb="1"/>
+							<CAN name="MCD 2 Temp Bar 1" id="BAR_TEMPERATURE1" display="__DATA1__ °C" minAcceptable="5" maxAcceptable="65" chiffresSign="2" specificSource="MCD" serialNb="2"/>
+		
+							<CAN name="MCD 1 Temp Bar 2" id="BAR_TEMPERATURE2" display="__DATA1__ °C" minAcceptable="5" maxAcceptable="65" chiffresSign="2" specificSource="MCD" serialNb="1"/>
+							<CAN name="MCD 2 Temp Bar 2" id="BAR_TEMPERATURE2" display="__DATA1__ °C" minAcceptable="5" maxAcceptable="65" chiffresSign="2" specificSource="MCD" serialNb="2"/>
+						</DataDisplayer>
+					</DualVWidget>
+				</Tab>
+				<Tab name="Debug"><DebugOptions/></Tab>
+			</TabContainer>
+		</Grid>
+		<Grid col="1" row="0">
+			<TabContainer>
+				<Tab name="ModuleStatus - Buttons">
+					<DualHWidget>
+						<Modulestatus nGrid="15" nColumns="5" />
+						<ButtonArray nbColumns="1">
+							<CAN name="Drogue" id="COMMAND_EMERGENCY_DEPLOY_DROGUE" popup="True"/>					
+							<CAN name="Main" id="COMMAND_EMERGENCY_DEPLOY_MAIN" popup="True"/>					
+							<CAN name="Arm" id="COMMAND_ARM" popup="True"/>					
+							<CAN name="Disarm" id="COMMAND_DISARM" popup="True"/>					
+							<CAN name="Lock" id="COMMAND_LOCK" popup="True"/>					
+							<CAN name="Unlock" id="COMMAND_UNLOCK" popup="True"/>					
+						</ButtonArray>
+					</DualHWidget>
+				</Tab>
+				<Tab name="Data Logs"><DisplayLogWidget/></Tab>
+				<Tab name="Plots">
+                    <Plot name="" unit="g" axis="Acceleration">
+						<CAN id="ICM_ACC_X"/>
+						<CAN id="ICM_ACC_Y"/>
+						<CAN id="ICM_ACC_Z"/>
+					</Plot>
+				</Tab>
+			</TabContainer>
+		</Grid>
+
+		<Grid col="0" row="1">
+			<TabContainer>
+				<Tab name="Map"><Map/></Tab>
+				<Tab name="Radio Status"><RadioStatus/></Tab>
+				<Tab name="Send CAN Msg"><CustomCANSender/></Tab>
+			</TabContainer>
+		</Grid>
+
+		<Grid col="1" row="1">
+			<TabContainer>
+				<Tab name="Main stats - Logs">
+					<DualVWidget>
+						<DataDisplayer>
+							<CAN name="1 - DROGUE" id="LVDM_BRIDGEWIRE_RES_DROGUE" customUpdate="admBWVoltsToOhmsString" customAcceptable="isBWOhmAcceptable" specificSource="MCD" serialNb="1" updateEach="10"/>
+							<CAN name="2 - DROGUE" id="LVDM_BRIDGEWIRE_RES_DROGUE" customUpdate="admBWVoltsToOhmsString" customAcceptable="isBWOhmAcceptable" specificSource="MCD" serialNb="2" updateEach="10"/>
+							<CAN name="1 - MAIN" id="LVDM_BRIDGEWIRE_RES_MAIN" customUpdate="admBWVoltsToOhmsString" customAcceptable="isBWOhmAcceptable" specificSource="MCD" serialNb="1" updateEach="10"/>
+							<CAN name="2 - MAIN" id="LVDM_BRIDGEWIRE_RES_MAIN" customUpdate="admBWVoltsToOhmsString" customAcceptable="isBWOhmAcceptable" specificSource="MCD" serialNb="2" updateEach="10"/>
+							<CAN name="1 - ARMING_STATE" id="LVDM_ARMING_STATUS" customUpdate="armingStatusUpdate" chiffresSign="0" minAcceptable="0" maxAcceptable="0" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - ARMING_STATE" id="LVDM_ARMING_STATUS" customUpdate="armingStatusUpdate" chiffresSign="0" minAcceptable="0" maxAcceptable="0" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - Nxt Rec. St." id="LVDM_STATE" customUpdate="admStateUpdate" chiffresSign="0" minAcceptable="0" maxAcceptable="6" specificSource="MCD" serialNb="1" />
+							<CAN name="2 - Nxt Rec. St." id="LVDM_STATE" customUpdate="admStateUpdate" chiffresSign="0" minAcceptable="0" maxAcceptable="6" specificSource="MCD" serialNb="2" />
+							<CAN name="1 - RAMP_ALT" id="LVDM_RAMP_ALT" minAcceptable="1000" maxAcceptable="1500" customUpdate="rampAlt" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - RAMP_ALT" id="LVDM_RAMP_ALT" minAcceptable="1000" maxAcceptable="1500" customUpdate="rampAlt" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - ALT bar 1" id="BAR_PRESS1" minAcceptable="25000" maxAcceptable="95000" customUpdate="pressToAlt" specificSource="MCD" serialNb="1" updateEach="10"/>
+							<CAN name="1 - ALT bar 2" id="BAR_PRESS2" minAcceptable="25000" maxAcceptable="95000" customUpdate="pressToAlt" specificSource="MCD" serialNb="1" updateEach="10"/>
+							<CAN name="2 - ALT bar 1" id="BAR_PRESS1" minAcceptable="25000" maxAcceptable="95000" customUpdate="pressToAlt" specificSource="MCD" serialNb="2" updateEach="10"/>
+							<CAN name="2 - ALT bar 2" id="BAR_PRESS2" minAcceptable="25000" maxAcceptable="95000" customUpdate="pressToAlt" specificSource="MCD" serialNb="2" updateEach="10"/>
+							<CAN name="1 - APOGEE" id="BAR_PRESS1" minAcceptable="25000" maxAcceptable="95000" customUpdate="apogeeDetect" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - APOGEE" id="BAR_PRESS1" minAcceptable="25000" maxAcceptable="95000" customUpdate="apogeeDetect" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - Lock" id="LVDM_LOCKED" chiffresSign="0" specificSource="MCD" minAcceptable="0" maxAcceptable="0" serialNb="1"/>
+							<CAN name="2 - Lock" id="LVDM_LOCKED" chiffresSign="0" specificSource="MCD" minAcceptable="0" maxAcceptable="0" serialNb="2"/>
+							<CAN name="1 - LAT" id="GPS1_LATITUDE" display="__DATA1__" minAcceptable="30" maxAcceptable="35" chiffresSign="6" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - LAT" id="GPS1_LATITUDE" display="__DATA1__" minAcceptable="30" maxAcceptable="35" chiffresSign="6" specificSource="MCD" serialNb="2"/>
+							<CAN name="1 - LONG" id="GPS1_LONGITUDE" display="__DATA1__" minAcceptable="100" maxAcceptable="110" chiffresSign="6" specificSource="MCD" serialNb="1"/>
+							<CAN name="2 - LONG" id="GPS1_LONGITUDE" display="__DATA1__" minAcceptable="100" maxAcceptable="110" chiffresSign="6" specificSource="MCD" serialNb="2"/>
+						</DataDisplayer>
+						<DisplayLogWidget>
+							<CAN id="LVDM_CANNOT_TRIGGER_NOT_ARMED"/>
+							<CAN id="LVDM_LOCKED_CANNOT_DISARM"/>
+							<CAN id="LVDM_EMERGENCY_KABOOM_CALLED"/>
+							<CAN id="LVDM_TRIGGERED"/>
+							<CAN id="LVDM_CHARGES_BURNT"/>
+							<CAN id="LVDM_DIAGNOSTIC_FAILURE"/>
+							<CAN id="LVDM_ACKNOWLEDGE"/>
+							<CAN id="VOTING_VSTRUCT_OVERFLOW"/>
+							<CAN id="VOTING_VSTRUCT_UPDATE_FAILURE"/>
+							<CAN id="MODULE_CRITICAL_FAILURE"/>
+							<CAN id="RADIO_ACKNOWLEDGE"/>
+							<CAN id="LOGGING_ACKNOWLEDGE"/>
+							<CAN id="ERR_CAN_GOT_BAD_MAGIC_BYTES"/>
+							<CAN id="ERR_CAN_SWITCHING_BUS"/>
+							<CAN id="MODULE_BASE_INIT_SUCCESS"/>
+							<CAN id="MODULE_SPECIFIC_INIT_SUCCESS"/>
+							<CAN id="MODULE_SPECIFIC_INIT_RECOVERABLE_ERROR"/>
+							<CAN id="MODULE_SPECIFIC_INIT_FAILURE"/>
+							<CAN id="LVDM_HALL_ACKNOWLEDGE"/>
+						</DisplayLogWidget>
+					</DualVWidget>
+				</Tab>
+			</TabContainer>
+		</Grid>
+	</GridContainer>
+</Rocket>
